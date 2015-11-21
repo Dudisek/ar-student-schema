@@ -3,10 +3,10 @@ require 'date'
 
 class Student < ActiveRecord::Base
 	attr_reader :age, :name
-	# validates :email, :uniqueness
 	validates :age, :numericality => {greater_than: 4}
 	validates :email, :uniqueness => true
 	validates :email, :format => { :with => /\w@\w{1}+[.]\w{2}/}
+	validates :phone, :format => { :with => /\d{3}[-]\d{3}[-]\d{4}/}
 # implement your Student model here
 	def name
 		@name = first_name + " " + last_name
